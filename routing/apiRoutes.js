@@ -28,6 +28,8 @@ module.exports = function(app) {
         var curUserScore = userScores[j];
         var diff = Math.abs(parseInt(curUserScore) - parseInt(curFriendScore));
         // var totalDiff = Math.abs(diff + diff)
+        // make it add all the differences for each newFriend
+        // and select lowest total.
         console.log(typeof curUserScore);
       }
 
