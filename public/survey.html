@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>FriendFindSurvey</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+    crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+  <div class="container">
+    <h1>Survey Questions</h1>
+
+    <h2>About You</h2>
+    <form method="post">
+      <div class="form-group">
+        <label for="exampleInputEmail1">Name (required)</label>
+        <input type="text" class="form-control" id="name" placeholder="Name">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Photo Image (required)</label>
+        <input type="text" class="form-control" id="photo" placeholder="Photo">
+      </div>
+
+      <div class="form-group">
+        <h4>Select a number from 1 to 5: 1 for strongly agree to 5 for strongly disagree. </h4>
+      </div>
+
+      <div class="form-group">
+        <h3>You get things done with few questions.</h3>
+        <select name="question1" id="qOne">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <h3>You appreciate the attention to detail others show.</h3>
+        <select name="question2" id="qTwo">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <h3>You get outside whenever you can.</h3>
+        <select name="question3" id="qThree">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <h3>You wonder why some people ask questions.</h3>
+        <select name="question4" id="qFour">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <h3>You enjoy getting away from a loud, crowded party of strangers.</h3>
+        <select name="question5" id="qFive">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <h3>You crave the company of others.</h3>
+        <select name="question6" id="qSix">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <h3>You hate reading the last chapter of a really good book.</h3>
+        <select name="question7" id="qSeven">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+      </div>
+
+      <button id="submit">SUBMIT</button>
+    </form>
+  </div>
+</body>
+
+<script type="text/javascript">
+  $("#submit").click(function (e) {
+    e.preventDefault();
+    console.log("BUTTON CLICKED!")
+
+
+    var formData = {
+      name: $("#name").val().trim(),
+      photo: $("#photo").val().trim(),
+      scores: [$("#qOne : selected").val().trim(),
+      $("#qTwo : selected").val().trim(),
+      $("#qThree : selected").val().trim(),
+      $("#qFour : selected").val().trim(),
+      $("#qFive : selected").val().trim(),
+      $("#qSix : selected").val().trim(),
+      $("#qSeven : selected").val().trim()
+      ]
+    }
+    console.log("FORM DATA" + formData)
+
+    $.post('/api/new', formData, function (data) {
+      console.log(data);
+      alert("Computing compatibities")
+    })
+
+  })
+</script>
+
+</html>
